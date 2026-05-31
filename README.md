@@ -269,7 +269,8 @@ The current implementation uses Ollama locally and does not require a paid AI AP
 
 ## Screenshots
 
-Add screenshots here after deployment.
+<img width="1568" height="1342" alt="image" src="https://github.com/user-attachments/assets/46b52e90-f4fe-4a77-b668-c94232994c4e" />
+
 
 Example:
 
