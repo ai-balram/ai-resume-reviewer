@@ -1,8 +1,8 @@
 # AI Resume Reviewer
 
-An AI-powered Resume Reviewer built with React, TypeScript, Node.js, Express, PDF Parsing, and Local LLMs using Ollama.
+An AI-powered Resume Reviewer built with React, TypeScript, Node.js, Express, PDF Parsing, and Ollama.
 
-The application allows users to upload a resume (PDF), paste a job description, and receive an AI-generated analysis including ATS score, strengths, missing skills, recommendations, and interview questions.
+The application allows users to upload a resume (PDF), paste a job description, and receive AI-generated insights including ATS score, strengths, missing skills, recommendations, and interview questions.
 
 ---
 
@@ -10,23 +10,23 @@ The application allows users to upload a resume (PDF), paste a job description, 
 
 ### Resume Upload
 - Upload resume in PDF format
-- Extract text automatically using PDF parser
+- Automatic PDF text extraction
 
 ### Job Description Analysis
 - Paste any job description
 - Compare resume against job requirements
 
 ### AI-Powered Insights
-- Resume Match Score (0-100)
-- Key Strengths
-- Missing Skills
+- Resume Match Score
+- Strengths Identification
+- Missing Skills Detection
 - Improvement Recommendations
-- Interview Questions
+- Interview Questions Generation
 
 ### Local AI Support
-- Runs locally using Ollama
-- No dependency on paid AI APIs
-- Privacy-friendly (resume stays local)
+- Uses Ollama locally
+- No paid API required
+- Privacy-friendly architecture
 
 ---
 
@@ -46,7 +46,8 @@ The application allows users to upload a resume (PDF), paste a job description, 
 
 ### AI
 - Ollama
-- Llama 3 / Qwen Models
+- Llama 3
+- Prompt Engineering
 
 ---
 
@@ -59,7 +60,7 @@ User Uploads Resume PDF
 React Frontend
           │
           ▼
-Express API
+Express Backend API
           │
           ▼
 PDF Parsing
@@ -79,7 +80,7 @@ Ollama LLM
 JSON Analysis
           │
           ▼
-React Dashboard
+Frontend Dashboard
 ```
 
 ---
@@ -87,19 +88,22 @@ React Dashboard
 ## Project Structure
 
 ```text
-ai-resume-reviewer
+resume-reviewer
 │
-├── resume-reviewer-ui
+├── ai-resume-reviewer
 │   ├── src
 │   ├── public
-│   └── package.json
+│   ├── package.json
+│   └── ...
 │
 ├── resume-reviewer-api
 │   ├── server.js
 │   ├── aiService.js
 │   ├── uploads
-│   └── package.json
+│   ├── package.json
+│   └── ...
 │
+├── .gitignore
 └── README.md
 ```
 
@@ -110,7 +114,7 @@ ai-resume-reviewer
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-resume-reviewer.git
+git clone https://github.com/ai-balram/ai-resume-reviewer.git
 
 cd ai-resume-reviewer
 ```
@@ -119,7 +123,7 @@ cd ai-resume-reviewer
 
 ## Backend Setup
 
-Navigate to backend folder:
+Open a terminal:
 
 ```bash
 cd resume-reviewer-api
@@ -133,6 +137,8 @@ npm install
 
 Install Ollama:
 
+### macOS
+
 ```bash
 brew install ollama
 ```
@@ -143,16 +149,10 @@ Start Ollama:
 ollama serve
 ```
 
-Pull model:
+Pull a model:
 
 ```bash
 ollama pull llama3
-```
-
-or
-
-```bash
-ollama pull qwen3:8b
 ```
 
 Start backend:
@@ -171,10 +171,10 @@ http://localhost:8000
 
 ## Frontend Setup
 
-Navigate to frontend folder:
+Open a second terminal:
 
 ```bash
-cd resume-reviewer-ui
+cd ai-resume-reviewer
 ```
 
 Install dependencies:
@@ -183,7 +183,7 @@ Install dependencies:
 npm install
 ```
 
-Run application:
+Start frontend:
 
 ```bash
 npm run dev
@@ -197,19 +197,6 @@ http://localhost:5173
 
 ---
 
-## Environment Variables
-
-Backend `.env`
-
-```env
-OPENAI_API_KEY=your_key_here
-```
-
-Note:
-OpenAI integration is optional. Current implementation uses Ollama locally.
-
----
-
 ## API Endpoint
 
 ### Analyze Resume
@@ -220,38 +207,74 @@ OpenAI integration is optional. Current implementation uses Ollama locally.
 POST /analyze
 ```
 
-Request:
+Content Type:
 
 ```text
 multipart/form-data
 ```
 
-Fields:
+Request Fields:
 
 ```text
 resume          PDF File
 jobDescription  String
 ```
 
-Response:
+Sample Response:
 
 ```json
 {
-  "score": 85,
+  "score": 82,
   "strengths": [
     "React",
-    "TypeScript"
+    "TypeScript",
+    "Leadership"
   ],
   "missingSkills": [
-    "LangChain"
+    "LangChain",
+    "RAG"
   ],
   "recommendations": [
-    "Add AI projects"
+    "Add AI projects",
+    "Highlight architecture achievements"
   ],
   "interviewQuestions": [
-    "Explain React rendering lifecycle"
+    "Explain React rendering lifecycle",
+    "How would you design a RAG system?"
   ]
 }
+```
+
+---
+
+## Environment Variables
+
+Backend `.env`
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+or
+
+```env
+OLLAMA_MODEL=llama3
+```
+
+Note:
+
+The current implementation uses Ollama locally and does not require a paid AI API.
+
+---
+
+## Screenshots
+
+Add screenshots here after deployment.
+
+Example:
+
+```md
+![Application Screenshot](docs/screenshot.png)
 ```
 
 ---
@@ -259,15 +282,15 @@ Response:
 ## Future Enhancements
 
 ### Phase 2
-- ATS Score Visualization
-- Modern Dashboard UI
-- Drag & Drop Resume Upload
+- ATS Score Gauge
+- Better UI/UX
+- Drag and Drop Resume Upload
 - Resume Improvement Suggestions
 
 ### Phase 3
 - AI Career Coach
 - Personalized Learning Roadmap
-- AI Architect Readiness Assessment
+- AI Readiness Assessment
 - Resume Version Comparison
 
 ### Phase 4
@@ -283,18 +306,24 @@ Response:
 This project demonstrates:
 
 - React + TypeScript Development
-- REST API Design
+- REST API Development
 - File Upload Handling
 - PDF Parsing
 - Prompt Engineering
 - LLM Integration
+- Full Stack Development
 - AI Application Architecture
-- End-to-End Full Stack Development
 
 ---
 
 ## Author
 
-Balram Sharma
+**Balram Sharma**
 
-AI Architect | Engineering Leader | AI Enthusiast
+AI Architect
+
+---
+
+## License
+
+This project is for learning, experimentation, and portfolio purposes.
